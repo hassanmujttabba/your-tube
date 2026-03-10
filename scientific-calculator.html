@@ -6,30 +6,95 @@
     <title>Scientific Calculator</title>
     <style>
         body {
-            background-color: #2a2a72; /* dark blue */
-            color: white;
+            background-color: #40E0D0; /* Turquoise */
+            color: #FFFFFF;
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        /* Button styles */
-        button {
-            background-color: #30cfd0; /* turquoise */
-            color: white;
+        .calculator {
+            background-color: #FF8C00; /* Dark orange */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #000;
+        }
+        .display {
+            width: 100%;
+            height: 60px;
+            background-color: #00FFFF; /* Cyan */
             border: none;
             border-radius: 5px;
+            font-size: 2em;
+            text-align: right;
             padding: 10px;
-            margin: 5px;
-            font-size: 1.2em;
-            cursor: pointer;
         }
-        button:hover {
-            background-color: #ff6a00; /* orange */
+        .button {
+            padding: 20px;
+            font-size: 1.5em;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #FFA500; /* Bright orange */
+        }
+        .button:active {
+            background-color: #FF4500; /* Orange red */
         }
     </style>
 </head>
 <body>
+<div class="calculator">
     <h1>Scientific Calculator</h1>
+    <input type="text" class="display" disabled />
     <div>
-        <!-- Calculator layout goes here -->
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="button">/</button>
     </div>
+    <div>
+        <button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="button">*</button>
+    </div>
+    <div>
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+        <button class="button">-</button>
+    </div>
+    <div>
+        <button class="button">0</button>
+        <button class="button">.</button>
+        <button class="button">=</button>
+        <button class="button">+</button>
+    </div>
+</div>
+<script>
+    const display = document.querySelector('.display');
+    const buttons = document.querySelectorAll('.button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const value = button.textContent;
+            if (value === '=') {
+                display.value = eval(display.value);
+            } else {
+                display.value += value;
+            }
+        });
+    });
+</script>
 </body>
 </html>
